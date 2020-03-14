@@ -31,13 +31,13 @@ def main():
   print("Exercise 25")
   text_exe_25 = ['she', 'sells', 'sea', 'shells', 'by', 'the', 'sea', 'shore']
   print([w for w in sorted(set(text_exe_25)) if w.startswith('sh')])
-  
+
   print("Exercise 27")
   print(vocab_size(text1))
 
   print("Exercise 28")
   print(percent("you", text1))
-  
+
 
 if __name__=="__main__":
   main()
