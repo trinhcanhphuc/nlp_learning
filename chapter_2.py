@@ -1,14 +1,6 @@
 import nltk
 
 
-"""
-This function obtains all bigrams from the text of the book of Genesis, then constructs a conditional frequency distribution to record which words are most likely to follow a given word
-"""
-def generate_model(cfdist, word, num=15):
-  for i in range(num):
-    print(word),
-    word = cfdist[word].max()
-
 def accessing_text_corpora():
   # Accessing text corpora
   ## Gutenberg Corpus. It contains 25000 free electronic books
@@ -72,60 +64,11 @@ def accessing_text_corpora():
   print("Annotated Text Corpora")
   print("=====================================")
 
-def conditional_frequency_distributions():
-  ## Counting Words By Genre
-  print("=====================================")
-  print("Counting Words By Genre")
-  print("=====================================")
-  from nltk.corpus import brown
-  cfd = nltk.ConditionalFreqDist((genre, word)
-    for genre in brown.categories()
-    for word in brown.words(categories=genre))
-  print(len(cfd))
-  genre_word = [(genre, word)
-                for genre in ['news', 'romance']
-                for word in brown.words(categories=genre)]
-  print(len(genre_word))
-  print(genre_word[:4])
-  print(genre_word[-4:])
-  cfd = nltk.ConditionalFreqDist(genre_word)
-  print(cfd.conditions())
-  print(list(cfd['romance'])[:10])
-  print("=====================================")
-  print("Plotting and Tabulating Distributions")
-  print("=====================================")
-  from nltk.corpus import inaugural
-  cfd = nltk.ConditionalFreqDist((target, fileid[:4])
-    for fileid in inaugural.fileids() for w in inaugural.words(fileid)
-    for target in ['america', 'citizen'] if w.lower().startswith(target))
-  print(list(cfd['america'])[:10])
-  from nltk.corpus import udhr
-  languages = ['Chickasaw', 'English', 'German_Deutsch',
-  'Greenlandic_Inuktikut', 'Hungarian_Magyar', 'Ibibio_Efik']
-  cfd = nltk.ConditionalFreqDist((lang, len(word))
-    for lang in languages
-    for word in udhr.words(lang + '-Latin1'))
-  print(list(cfd['English'])[:10])
-  print(cfd.tabulate(conditions=['English', 'German_Deutsch'], samples=range(20), cumulative=True))
-  print("=====================================")
-  print("Generating Random Text with Bigrams")
-  print("=====================================")
-  sent = ['In', 'the', 'beginning', 'God', 'created', 'the', 'heaven', 'and', 'the', 'earth', '.']
-  print(list(nltk.bigrams(sent)))
-  text = nltk.corpus.genesis.words('english-kjv.txt')
-  bigrams = nltk.bigrams(text)
-  cfd = nltk.ConditionalFreqDist(bigrams)
-  print(list(cfd['living']))
-  generate_model(cfd, 'living')
-
-
 """
 A function main of program
 """
 def main():
-  # accessing_text_corpora()
-  conditional_frequency_distributions()
-
+  accessing_text_corpora()
 
 
 if __name__=="__main__":
