@@ -127,6 +127,32 @@ def generating_random_text_with_bigrams():
   print(list(cfd['living']))
   generate_model(cfd, 'living')
 
+def lexical_diversity(text):
+  word_count = len(text)
+  vocab_size = len(set(text))
+  return word_count/vocab_size
+
+def plural(word):
+  if word.endswith('y'):
+    return word[:-1] + 'ies'
+  elif word[-1] in 'sx' or word[-2:] in ['sh', 'ch']:
+    return word + 'es'
+  elif word.endswith('an'):
+    return word[:-2] + 'en'
+  else:
+    return word + 's'
+
+
+def reusing_code():
+  print("=====================================")
+  print("Lexical Diversity")
+  print("=====================================")
+  print(lexical_diversity("Hi My name is Pluar. My dog is Zero"))
+  print("=====================================")
+  print("Plural")
+  print("=====================================")
+  print(plural('fairy'))
+  print(plural('woman'))
 
 """
 A function main of program
@@ -134,6 +160,7 @@ A function main of program
 def main():
   accessing_text_corpora()
   conditional_frequency_distributions()
+  reusing_code()
 
 
 if __name__=="__main__":
