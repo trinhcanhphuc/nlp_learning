@@ -154,13 +154,69 @@ def reusing_code():
   print(plural('fairy'))
   print(plural('woman'))
 
+def unusual_words(text):
+  text_vocab = set(w.lower() for w in text if w.isalpha())
+  english_vocab = set(w.lower() for w in nltk.corpus.words.words())
+  unusual = text_vocab.difference(english_vocab)
+  return sorted(unusual)
+
+def lexical_resources():
+  print("=====================================")
+  print("Wordlist Corpora")
+  print("=====================================")
+  print(unusual_words(nltk.corpus.gutenberg.words('austen-sense.txt'))[:10])
+  print(unusual_words(nltk.corpus.nps_chat.words())[:10])
+  from nltk.corpus import stopwords
+  print(stopwords.words('english')[:10])
+  print(content_fraction(nltk.corpus.reuters.words()))
+  print(produce_word_from_chars('egivrvonl'))
+  print(find_name_both_male_and_female()[:10])
+  plot_names()
+  print("=====================================")
+  print("A Pronouncing Dictionary")
+  print("=====================================")
+  entries = nltk.corpus.cmudict.entries()
+  print(len(entries))
+  for entry in entries[39943:39951]:
+    print(entry)
+  print([w for w, pron in entries if stress(pron) == ['0', '1', '0', '2', '0']][:10])
+
+def stress(pron):
+  return [char for phone in pron for char in phone if char.isdigit()]
+def produce_word_from_chars(chars):
+  puzzle_letters = nltk.FreqDist(chars)
+  obligatory = 'r'
+  wordlist = nltk.corpus.words.words()
+  return [w for w in wordlist if len(w) >= 6
+                          and obligatory in w
+                          and nltk.FreqDist(w) <= puzzle_letters]
+
+def find_name_both_male_and_female():
+  names = nltk.corpus.names
+  male_names = names.words('male.txt')
+  female_names = names.words('female.txt')
+  return [w for w in male_names if w in female_names]
+
+def plot_names():
+  names = nltk.corpus.names
+  cfd = nltk.ConditionalFreqDist((fileid, name[-1])
+    for fileid in names.fileids()
+    for name in names.words(fileid))
+  cfd.plot()
+
+def content_fraction(text):
+  stopwords = nltk.corpus.stopwords.words('english')
+  content = [w for w in text if w.lower() not in stopwords]
+  return len(content)/len(text)
+
 """
 A function main of program
 """
 def main():
-  accessing_text_corpora()
-  conditional_frequency_distributions()
-  reusing_code()
+  # accessing_text_corpora()
+  # conditional_frequency_distributions()
+  # reusing_code()
+  lexical_resources()
 
 
 if __name__=="__main__":
