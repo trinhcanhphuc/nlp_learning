@@ -180,6 +180,19 @@ def lexical_resources():
   for entry in entries[39943:39951]:
     print(entry)
   print([w for w, pron in entries if stress(pron) == ['0', '1', '0', '2', '0']][:10])
+  print("=====================================")
+  print("Comparative Wordlists")
+  print("=====================================")
+  from nltk.corpus import swadesh
+  print(swadesh.fileids())
+  print(swadesh.words('en')[:10])
+  translate()
+  translate_mul_langs(['en', 'de', 'nl', 'es', 'fr', 'pt', 'la'])
+  print("=====================================")
+  print("Shoebox and Toolbox Lexicons")
+  print("=====================================")
+  from nltk.corpus import toolbox
+  print(toolbox.entries('rotokas.dic')[:2])
 
 def stress(pron):
   return [char for phone in pron for char in phone if char.isdigit()]
@@ -208,6 +221,17 @@ def content_fraction(text):
   stopwords = nltk.corpus.stopwords.words('english')
   content = [w for w in text if w.lower() not in stopwords]
   return len(content)/len(text)
+
+def translate():
+  from nltk.corpus import swadesh
+  fr2en = swadesh.entries(['fr', 'en'])
+  translate = dict(fr2en)
+  print(translate['chien'])
+
+def translate_mul_langs(languages):
+  from nltk.corpus import swadesh
+  for i in [139, 140, 141, 142]:
+    print(swadesh.entries(languages)[i])
 
 """
 A function main of program
