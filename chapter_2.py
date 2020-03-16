@@ -193,6 +193,18 @@ def lexical_resources():
   print("=====================================")
   from nltk.corpus import toolbox
   print(toolbox.entries('rotokas.dic')[:2])
+  print("=====================================")
+  print("WordNet")
+  print("=====================================")
+  from nltk.corpus import wordnet as wn
+  wn.synsets('motorcar')
+  print(wn.synset('car.n.01').lemma_names())
+  print(wn.synset('car.n.01').definition())
+  print(wn.synset('car.n.01').examples())
+  print(wn.synsets('car'))
+  motorcar = wn.synset('car.n.01')
+  types_of_motorcar = motorcar.hyponyms()
+  print(types_of_motorcar[26])
 
 def stress(pron):
   return [char for phone in pron for char in phone if char.isdigit()]
