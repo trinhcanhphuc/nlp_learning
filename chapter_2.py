@@ -245,6 +245,33 @@ def translate_mul_langs(languages):
   for i in [139, 140, 141, 142]:
     print(swadesh.entries(languages)[i])
 
+def exercise():
+  print("=====================================")
+  print("Exercise 1")
+  print("=====================================")
+  # Create a variable phrase containing a list of words. Experiment with the operations described in this chapter, including addition, multiplication, indexing, slicing, and sorting.
+  from nltk.corpus import webtext
+  fileid = webtext.fileids()[0]
+  phrase = webtext.words(fileid)
+  print("addition: ", phrase[:10]+["aaaa"])
+  print("multiplication: ", phrase[:10]*2)
+  print("slicing: ", sorted(phrase[:10]))
+  print("=====================================")
+  print("Exercise 2")
+  print("=====================================")
+  # Use the corpus module to explore austen-persuasion.txt. How many word tokens does this book have? How many word types (vocabularies)?
+  from nltk.corpus import gutenberg
+  text = gutenberg.words('austen-persuasion.txt')
+  tokens = len(text)
+  print("tokens: ", tokens)
+  word_types = len(set([w.lower() for w in text]))
+  print("word_types: ", word_types)
+  print("=====================================")
+  print("Exercise 3")
+  print("=====================================")
+  # Use the Brown Corpus reader nltk.corpus.brown.words() or the Web Text Cor- pus reader nltk.corpus.webtext.words() to access some sample text in two differ- ent genres.
+
+
 """
 A function main of program
 """
@@ -252,7 +279,8 @@ def main():
   # accessing_text_corpora()
   # conditional_frequency_distributions()
   # reusing_code()
-  lexical_resources()
+  # lexical_resources()
+  exercise()
 
 
 if __name__=="__main__":
