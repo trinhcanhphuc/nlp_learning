@@ -269,7 +269,17 @@ def exercise():
   print("=====================================")
   print("Exercise 3")
   print("=====================================")
-  # Use the Brown Corpus reader nltk.corpus.brown.words() or the Web Text Cor- pus reader nltk.corpus.webtext.words() to access some sample text in two differ- ent genres.
+  # Use the Brown Corpus reader nltk.corpus.brown.words() or the Web Text Corpus reader nltk.corpus.webtext.words() to access some sample text in two different genres.
+  from nltk.corpus import brown
+  brown_text = brown.words(categories='news')
+  print(brown_text[:10])
+  from nltk.corpus import webtext
+  webtext_text = webtext.words(webtext.fileids()[0])
+  print(webtext_text[:10])
+  print("=====================================")
+  print("Exercise 4")
+  print("=====================================")
+  # Read in the texts of the State of the Union addresses, using the state_union corpus reader. Count occurrences of men, women, and people in each document. What has happened to the usage of these words over time?
 
 
 """
