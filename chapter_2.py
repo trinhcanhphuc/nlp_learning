@@ -280,7 +280,9 @@ def exercise():
   print("Exercise 4")
   print("=====================================")
   # Read in the texts of the State of the Union addresses, using the state_union corpus reader. Count occurrences of men, women, and people in each document. What has happened to the usage of these words over time?
-
+  from nltk.corpus import state_union
+  for fileid in state_union.fileids():
+    print(len([w.lower() for w in state_union.words(fileid) if w=='men' or w=='women' ]))
 
 """
 A function main of program
