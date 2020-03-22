@@ -283,6 +283,20 @@ def exercise():
   from nltk.corpus import state_union
   for fileid in state_union.fileids():
     print(len([w.lower() for w in state_union.words(fileid) if w=='men' or w=='women' ]))
+  print("=====================================")
+  print("Exercise 5")
+  print("=====================================")
+  # Investigate the holonym-meronym relations for some nouns. Remember that there are three kinds of holonym-meronym relation, so you need to use member_meronyms(), part_meronyms(), substance_meronyms(), member_holonyms(), part_holonyms(), and substance_holonyms().
+  from nltk.corpus import wordnet as wn
+  print([synset.name() + ': ' + synset.definition() for synset in wn.synsets('table')])
+  synset = wn.synset('table.n.02')
+  print(synset.name() + ': ' + synset.definition())
+  print(synset.part_meronyms())
+  print(synset.substance_meronyms())
+  print(synset.member_holonyms())
+  print(synset.part_holonyms())
+  print(synset.substance_holonyms())
+  
 
 """
 A function main of program
