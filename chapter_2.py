@@ -305,10 +305,17 @@ def exercise():
   en2it = swadesh.entries(['en', 'it'])
   translate = dict(en2it)
   print(translate['we'])
-  
-
-
-
+  print("=====================================")
+  print("Exercise 9")
+  print("=====================================")
+  # Pick a pair of texts and study the differences between them, in terms of vocabulary, vocabulary richness, genre, etc. Can you find pairs of words that have quite different meanings across the two texts, such as monstrous in Moby Dick and in Sense and Sensibility?
+  # from nltk.book import *
+  import nltk
+  from nltk.book import text1, text2
+  print(list(nltk.FreqDist(text1))[:10])
+  print(list(nltk.FreqDist(text2))[:10])
+  text1.concordance('monstrous')
+  text2.concordance('monstrous')
 
 """
 A function main of program
