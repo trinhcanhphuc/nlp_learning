@@ -342,10 +342,10 @@ def exercise():
 A function main of program
 """
 def main():
-  # accessing_text_corpora()
-  # conditional_frequency_distributions()
-  # reusing_code()
-  # lexical_resources()
+  accessing_text_corpora()
+  conditional_frequency_distributions()
+  reusing_code()
+  lexical_resources()
   exercise()
 
 
