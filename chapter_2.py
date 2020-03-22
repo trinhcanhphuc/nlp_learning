@@ -325,6 +325,18 @@ def exercise():
   print(text)
   fdist1 = nltk.FreqDist(text)
   fdist1.plot(30)
+  print("=====================================")
+  print("Exercise 14")
+  print("=====================================")
+  # Define a function supergloss(s) that takes a synset s as its argument and returns a string consisting of the concatenation of the definition of s, and the definitions of all the hypernyms and hyponyms of s.
+  def supergloss(s):
+    s_hyponyms = [w.name() + ': ' + w.definition() for w in s.hyponyms()]
+    s_hypernyms = [w.name() + ': ' + w.definition() for w in s.hypernyms()]
+    return s.definition() + '\n' + str(s_hyponyms) + '\n' + str(s_hypernyms)
+
+  bike_synset = wn.synset('bike.n.01')
+  print(supergloss(bike_synset))
+
 
 """
 A function main of program
