@@ -296,7 +296,19 @@ def exercise():
   print(synset.member_holonyms())
   print(synset.part_holonyms())
   print(synset.substance_holonyms())
+  print("=====================================")
+  print("Exercise 6")
+  print("=====================================")
+  # In the discussion of comparative wordlists, we created an object called translate, which you could look up using words in both German and Italian in order to get corresponding words in English. What problem might arise with this approach? Can you suggest a way to avoid this problem?
+  # Answer: It can't translate some words and uses too many resources
+  from nltk.corpus import swadesh
+  en2it = swadesh.entries(['en', 'it'])
+  translate = dict(en2it)
+  print(translate['we'])
   
+
+
+
 
 """
 A function main of program
