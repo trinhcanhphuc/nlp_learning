@@ -1,0 +1,11 @@
+fuzzy 53
+hello 42
+student 14
+chaper 56
+word 21
+progress 55
+visual 11
+explorer 56
+last 31
+task 15
+list 42

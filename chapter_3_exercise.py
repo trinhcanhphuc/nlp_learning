@@ -10,6 +10,7 @@ import os
 from command_history import history
 from random import randint
 from nltk.corpus import gutenberg
+import unicodedata
 
 
 print("=====================================")
@@ -42,3 +43,10 @@ print("=====================================")
 raw = gutenberg.raw('melville-moby_dick.txt')
 wh_words = set(re.findall(r'\b[wh][Wh]\w+', raw))
 print(sorted(wh_words))
+
+print("=====================================")
+print("Exercise 19")
+print("=====================================")
+lines = open('word_freq.txt', encoding='latin2').readlines()
+result = [[line.split(' ')[0], int(line.split(' ')[1])] for line in lines]
+print(result)
