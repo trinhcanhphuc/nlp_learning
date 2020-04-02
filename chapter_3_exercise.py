@@ -11,7 +11,6 @@ from command_history import history
 from random import randint
 
 
-# 6
 print("=====================================")
 print("Exercise 6")
 print("=====================================")
@@ -23,10 +22,15 @@ patterns = [r'[a-zA-Z]+', r'[A-Z][a-z]*', r'p[aeiou]{,2}t', r'\d+(\.\d+)?', r'([
 for pattern in patterns:
   nltk.re_show(pattern, raw)
 
-# 8
 print("=====================================")
 print("Exercise 8")
 print("=====================================")
 def getUrlContent(url):
   return request.urlopen(url).read().decode('utf8')
 print(getUrlContent('http://nltk.org/'))
+
+print("=====================================")
+print("Exercise 16")
+print("=====================================")
+from prog import monty
+print(monty)
