@@ -12,6 +12,9 @@ from random import randint
 
 
 # 6
+print("=====================================")
+print("Exercise 6")
+print("=====================================")
 raw = """'When I'M a Duchess,' she said to herself, (not in a very hopeful tone
 though), 'I won't have any pepper in my kitchen AT ALL. Soup does very
 well without--Maybe it's always pepper that makes people hot-tempered,'..."""
@@ -21,6 +24,9 @@ for pattern in patterns:
   nltk.re_show(pattern, raw)
 
 # 8
+print("=====================================")
+print("Exercise 8")
+print("=====================================")
 def getUrlContent(url):
   return request.urlopen(url).read().decode('utf8')
 print(getUrlContent('http://nltk.org/'))
