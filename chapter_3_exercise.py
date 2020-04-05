@@ -11,6 +11,7 @@ from command_history import history
 from random import randint
 from nltk.corpus import gutenberg
 import unicodedata
+from nltk.corpus import words
 
 
 print("=====================================")
@@ -63,3 +64,30 @@ print(tokens)
 pattern = r'\w+\d+[°%F]*\d*'
 r = re.compile(pattern)
 print(list(filter(r.match, tokens)))
+
+print("=====================================")
+print("Exercise 21")
+print("=====================================")
+def unknown(url):
+  raw = get_raw_from_url(url)
+  nltk_corpus_words = get_nltk_corpus_words()
+  pattern = r'\b\w+'
+  lower_case_words = get_words_in_raw_by_pattern(pattern, raw)
+  unknown_words = [word for word in lower_case_words if word not in nltk_corpus_words]
+  return unknown_words
+
+def get_words_in_raw_by_pattern(pattern, raw):
+  return re.findall(pattern, raw)
+
+def get_nltk_corpus_words():
+  return set(words.words())
+
+def get_raw_from_url(url):
+  req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+  html = urlopen(req).read().decode('utf-8')
+  raw = BeautifulSoup(html, 'html.parser').get_text()
+  return raw
+
+url = 'http://news.bbc.co.uk/'
+print(unknown(url))
+
